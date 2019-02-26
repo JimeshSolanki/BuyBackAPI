@@ -9,6 +9,12 @@ namespace BuyBackAPI.Models
         [DataMember(Name = "id")]
         public int? Id { get; set; }
 
+        [DataMember(Name = "username")]
+        public string Username { get; set; }
+
+        [DataMember(Name = "password")]
+        public string Password { get; set; }
+
         [DataMember(Name = "firstname")]
         public string Firstname { get; set; }
 
@@ -43,6 +49,6 @@ namespace BuyBackAPI.Models
         public int? IsLocked { get; set; }
 
         [DataMember(Name = "profileimage")]
-        public int? ProfileImage { get; set; }
+        public string ProfileImage { get; set; }
     }
 }
