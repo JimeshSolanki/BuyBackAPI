@@ -1,6 +1,5 @@
 ﻿using BuyBackAPI.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 using System;
 
 namespace BuyBackAPI.Controllers
@@ -14,11 +13,11 @@ namespace BuyBackAPI.Controllers
             return Startup.ConnectionString;
         }
 
-        public static Response BuildResponse(bool isSuccess, int Count, string Message, Object Object, Exception e)
+        public static Response BuildResponse(int Status, int Count, string Message, Object Object, Exception e)
         {
             return new Response
             {
-                IsSuccess = isSuccess,
+                Status = Status,
                 Count = Count,
                 Message = Message ?? e.ToString() ?? string.Empty,
                 Data = Object ?? string.Empty

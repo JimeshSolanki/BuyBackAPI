@@ -5,9 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BuyBackAPI.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/user/List")]
     [ApiController]
+    [Route("api/user")]
     public class UserController : BaseController
     {
         Response response = null;
@@ -15,6 +14,7 @@ namespace BuyBackAPI.Controllers
         int Count = 0;
 
         [HttpGet]
+        [Route("List")]
         public Response GetAllUsers()
         {
             var data = DbClientFactory<UserDBClient>.instance.GetAllUsers(GetConnectionString());
@@ -28,6 +28,37 @@ namespace BuyBackAPI.Controllers
             else
             {
                 Message = AppConstant.RECORD_NOT_FOUND_MESSAGE;
+                response = BuildResponse(AppConstant.STATUS_FAILED, Count, Message, null, null);
+            }
+
+            return response;
+        }
+
+        [HttpGet]
+        [Route("GetById")]
+        public Response GetUserDetailsById(Request request)
+        {
+            if (IsValidId(request.Id))
+            {
+                var Id = ToInt(request.Id);
+
+                var data = DbClientFactory<UserDBClient>.instance.GetUserById(GetConnectionString(), Id);
+
+                if (data != null)
+                {
+                    Message = AppConstant.RECORD_FOUNT_MESSAGE;
+                    Count = 1;
+                    response = BuildResponse(AppConstant.STATUS_SUCCESS, Count, Message, data, null);
+                }
+                else
+                {
+                    Message = AppConstant.RECORD_NOT_FOUND_MESSAGE;
+                    response = BuildResponse(AppConstant.STATUS_FAILED, Count, Message, null, null);
+                }
+            }
+            else
+            {
+                Message = AppConstant.INVALID_ID;
                 response = BuildResponse(AppConstant.STATUS_FAILED, Count, Message, null, null);
             }
 

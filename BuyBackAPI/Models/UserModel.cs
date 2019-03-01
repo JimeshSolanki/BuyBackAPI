@@ -6,49 +6,52 @@ namespace BuyBackAPI.Models
     [DataContract]
     public class UserModel
     {
-        [DataMember(Name = "id")]
+        [DataMember(Name = "Id")]
         public int? Id { get; set; }
 
-        [DataMember(Name = "username")]
+        [DataMember(Name = "Username")]
         public string Username { get; set; }
 
-        [DataMember(Name = "password")]
+        [DataMember(Name = "Password")]
         public string Password { get; set; }
 
-        [DataMember(Name = "firstname")]
+        [DataMember(Name = "Firstname")]
         public string Firstname { get; set; }
 
-        [DataMember(Name = "middlename")]
+        [DataMember(Name = "Middlename")]
         public string Middlename { get; set; }
 
-        [DataMember(Name = "lastname")]
+        [DataMember(Name = "Lastname")]
         public string Lastname { get; set; }
 
-        [DataMember(Name = "dateofbirth")]
+        [DataMember(Name = "Dateofbirth")]
         public DateTime? DateOfBirth { get; set; }
 
-        [DataMember(Name = "age")]
+        [DataMember(Name = "Age")]
         public int? Age { get; set; }
 
-        [DataMember(Name = "gender")]
+        [DataMember(Name = "Gender")]
         public string Gender { get; set; }
 
-        [DataMember(Name = "mobileno")]
+        [DataMember(Name = "Mobileno")]
         public string Mobileno { get; set; }
 
-        [DataMember(Name = "emailaddress")]
+        [DataMember(Name = "Emailaddress")]
         public string Emailaddress { get; set; }
 
-        [DataMember(Name = "bio")]
+        [DataMember(Name = "Bio")]
         public string Bio { get; set; }
 
-        [DataMember(Name = "roleid")]
+        [DataMember(Name = "Roleid")]
         public int? Roleid { get; set; }
 
-        [DataMember(Name = "islocked")]
+        [DataMember(Name = "Rolename")]
+        public string Rolename { get; set; }
+
+        [DataMember(Name = "Islocked")]
         public int? IsLocked { get; set; }
 
-        [DataMember(Name = "profileimage")]
+        [DataMember(Name = "Profileimage")]
         public string ProfileImage { get; set; }
     }
 }

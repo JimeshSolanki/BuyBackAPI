@@ -4,6 +4,7 @@ namespace BuyBackAPI.Models
 {
     public class Request
     {
+        public string Id { get; set; }
     }
 
     public class SettingModel
@@ -14,8 +15,8 @@ namespace BuyBackAPI.Models
     [DataContract]
     public class Response
     {
-        [DataMember(Name = "IsSuccess")]
-        public bool IsSuccess { get; set; }
+        [DataMember(Name = "Status")]
+        public int Status { get; set; }
 
         [DataMember(Name = "Message")]
         public string Message { get; set; }

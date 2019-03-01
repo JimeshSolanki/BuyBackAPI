@@ -4,8 +4,8 @@ namespace BuyBackAPI.Utility
 {
     public class AppConstant
     {
-        public const bool STATUS_SUCCESS = true;
-        public const bool STATUS_FAILED = false;
+        public const int STATUS_SUCCESS = 1;
+        public const int STATUS_FAILED = 0;
 
         public const string INSERT_MESSAGE = "Record Inserted Successfully.";
         public const string UPDATE_MESSAGE = "Record Updated Successfully.";

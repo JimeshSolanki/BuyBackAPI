@@ -60,6 +60,11 @@ namespace BuyBackAPI.Translator
                 user.Age = SqlHelper.GetNullableInt32(reader, "age");
             }
 
+            if (reader.IsColumnExists("gender"))
+            {
+                user.Gender = SqlHelper.GetNullableString(reader, "gender");
+            }
+
             if (reader.IsColumnExists("mobileno"))
             {
                 user.Mobileno = SqlHelper.GetNullableString(reader, "mobileno");
@@ -80,9 +85,19 @@ namespace BuyBackAPI.Translator
                 user.Roleid = SqlHelper.GetNullableInt32(reader, "roleid");
             }
 
+            if (reader.IsColumnExists("rolename"))
+            {
+                user.Rolename = SqlHelper.GetNullableString(reader, "rolename");
+            }
+
+            if (reader.IsColumnExists("bio"))
+            {
+                user.Bio = SqlHelper.GetNullableString(reader, "bio");
+            }
+
             if (reader.IsColumnExists("profileimage"))
             {
-                user.ProfileImage= SqlHelper.GetNullableString(reader, "profileimage");
+                user.ProfileImage = SqlHelper.GetNullableString(reader, "profileimage");
             }
 
             return user;
