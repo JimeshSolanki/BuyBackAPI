@@ -7,11 +7,6 @@ namespace BuyBackAPI.Models
         public string Id { get; set; }
     }
 
-    public class SettingModel
-    {
-        public string connectionString { get; set; }
-    }
-
     [DataContract]
     public class Response
     {

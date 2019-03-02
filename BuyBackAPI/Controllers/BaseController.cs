@@ -58,10 +58,5 @@ namespace BuyBackAPI.Controllers
         {
             return number != null ? Convert.ToDecimal(number) : 0;
         }
-
-        public static bool IsListNull(Object list)
-        {
-            return list != null ? false : true;
-        }
     }
 }
