@@ -100,7 +100,12 @@ namespace BuyBackAPI.Controllers.Master
             {
                 res = DbClientFactory<SubCategoryDBClient>.instance.ManageSubCategory(GetConnectionString(), subcategory);
 
-                if (res == "C200")
+                if (res == "C201")
+                {
+                    Message = "Sub Category already exist.";
+                    response = BuildResponse(AppConstant.STATUS_FAILED, Count, Message, null, null);
+                }
+                else
                 {
                     Count = 1;
                     if (subcategory.Id == 0)
@@ -112,11 +117,6 @@ namespace BuyBackAPI.Controllers.Master
                         Message = AppConstant.UPDATE_MESSAGE;
                     }
                     response = BuildResponse(AppConstant.STATUS_SUCCESS, Count, Message, null, null);
-                }
-                else if (res == "C201")
-                {
-                    Message = "Sub Category already exist.";
-                    response = BuildResponse(AppConstant.STATUS_FAILED, Count, Message, null, null);
                 }
             }
             else

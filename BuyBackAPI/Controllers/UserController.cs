@@ -125,7 +125,12 @@ namespace BuyBackAPI.Controllers
             {
                 res = DbClientFactory<UserDBClient>.instance.ManageUser(GetConnectionString(), user);
 
-                if (res == "C200")
+                if (res == "C201")
+                {
+                    Message = "Username already exist.";
+                    response = BuildResponse(AppConstant.STATUS_FAILED, Count, Message, null, null);
+                }
+                else
                 {
                     Count = 1;
                     if (user.Id == 0)
@@ -137,11 +142,6 @@ namespace BuyBackAPI.Controllers
                         Message = AppConstant.UPDATE_MESSAGE;
                     }
                     response = BuildResponse(AppConstant.STATUS_SUCCESS, Count, Message, null, null);
-                }
-                else if (res == "C201")
-                {
-                    Message = "Username already exist.";
-                    response = BuildResponse(AppConstant.STATUS_FAILED, Count, Message, null, null);
                 }
             }
             else

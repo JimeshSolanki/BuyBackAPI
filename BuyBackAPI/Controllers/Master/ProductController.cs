@@ -99,7 +99,12 @@ namespace BuyBackAPI.Controllers.Master
             {
                 res = DbClientFactory<ProductDBClient>.instance.ManageProduct(GetConnectionString(), product);
 
-                if (res == "C200")
+                if (res == "C201")
+                {
+                    Message = "Product already exist.";
+                    response = BuildResponse(AppConstant.STATUS_FAILED, Count, Message, null, null);
+                }
+                else
                 {
                     Count = 1;
                     if (product.Id == 0)
@@ -110,12 +115,7 @@ namespace BuyBackAPI.Controllers.Master
                     {
                         Message = AppConstant.UPDATE_MESSAGE;
                     }
-                    response = BuildResponse(AppConstant.STATUS_SUCCESS, Count, Message, null, null);
-                }
-                else if (res == "C201")
-                {
-                    Message = "Product already exist.";
-                    response = BuildResponse(AppConstant.STATUS_FAILED, Count, Message, null, null);
+                    response = BuildResponse(AppConstant.STATUS_SUCCESS, Count, Message, res, null);
                 }
             }
             else
