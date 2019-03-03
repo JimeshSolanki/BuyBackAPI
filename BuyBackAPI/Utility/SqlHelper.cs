@@ -74,6 +74,11 @@ namespace BuyBackAPI.Utility
             return reader.IsDBNull(reader.GetOrdinal(colName)) ? AppConstant.ToStr("") : AppConstant.ToStr(reader[colName].ToString());
         }
 
+        public static Decimal? GetNullableDecimal(SqlDataReader reader, string colName)
+        {
+            return reader.IsDBNull(reader.GetOrdinal(colName)) ? 0 : Convert.ToDecimal(reader[colName].ToString());
+        }
+
         public static int? GetNullableInt32(SqlDataReader reader, string colName)
         {
             return reader.IsDBNull(reader.GetOrdinal(colName)) ? 0 : Convert.ToInt32(reader[colName].ToString());

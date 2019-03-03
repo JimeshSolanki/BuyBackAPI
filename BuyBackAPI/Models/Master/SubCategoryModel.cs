@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace BuyBackAPI.Models.Master
+﻿namespace BuyBackAPI.Models.Master
 {
     public class SubCategoryModel
     {
@@ -9,5 +7,7 @@ namespace BuyBackAPI.Models.Master
         public int? CategoryId { get; set; }
 
         public string SubCategoryName { get; set; }
+
+        public string CategoryName { get; set; }
     }
 }

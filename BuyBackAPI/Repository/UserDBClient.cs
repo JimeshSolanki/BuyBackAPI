@@ -10,13 +10,13 @@ namespace BuyBackAPI.Repository
     {
         public List<UserModel> GetAllUsers(string connectionString)
         {
-            return SqlHelper.ExecuteProcedureReturnData<List<UserModel>>(connectionString, "GetAllUsers", x => x.TranslateAsUsersList());
+            return SqlHelper.ExecuteProcedureReturnData<List<UserModel>>(connectionString, "getalluser", x => x.TranslateAsUsersList());
         }
 
         public UserModel GetUserById(string connectionString, int id)
         {
             SqlParameter[] sqlParameters = { new SqlParameter("@Id", id) };
-            return SqlHelper.ExecuteProcedureReturnData<UserModel>(connectionString, "GetUserById", x => x.TranslateUser(), sqlParameters);
+            return SqlHelper.ExecuteProcedureReturnData<UserModel>(connectionString, "getuserbyid", x => x.TranslateUser(), sqlParameters);
         }
 
         public string ManageUser(string connectionString, UserModel user)
@@ -46,7 +46,7 @@ namespace BuyBackAPI.Repository
                 outParam
             };
 
-            SqlHelper.ExectueProcedureReturnString(connectionString, "SaveUser", parameter);
+            SqlHelper.ExectueProcedureReturnString(connectionString, "manageuser", parameter);
             return (string)outParam.Value;
         }
     }

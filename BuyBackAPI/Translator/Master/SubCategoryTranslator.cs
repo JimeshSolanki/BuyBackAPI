@@ -35,6 +35,11 @@ namespace BuyBackAPI.Translator.MasterTranslator
                 subCategory.SubCategoryName = SqlHelper.GetNullableString(reader, "subcategoryname");
             }
 
+            if (reader.IsColumnExists("categoryname"))
+            {
+                subCategory.CategoryName = SqlHelper.GetNullableString(reader, "categoryname");
+            }
+
             return subCategory;
         }
 

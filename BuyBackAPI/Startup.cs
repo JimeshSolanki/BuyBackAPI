@@ -1,8 +1,7 @@
-﻿using BuyBackAPI.Models;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -23,6 +22,13 @@ namespace BuyBackAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddApiVersioning(x =>
+            {
+                x.ReportApiVersions = true;
+                x.AssumeDefaultVersionWhenUnspecified = true;
+                x.DefaultApiVersion = new ApiVersion(1, 0);
+                x.ApiVersionReader = new HeaderApiVersionReader("api_version");
+            });
 
             ConnectionString = Configuration["ConnectionStrings:DefaultConnection"];
         }

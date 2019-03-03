@@ -16,7 +16,7 @@ namespace BuyBackAPI.Controllers
 
         #region Get List of User
         [HttpPost]
-        [Route("List")]
+        [Route("list")]
         public IActionResult GetAllUsers()
         {
             var data = DbClientFactory<UserDBClient>.instance.GetAllUsers(GetConnectionString());
@@ -39,7 +39,7 @@ namespace BuyBackAPI.Controllers
 
         #region Get User Details By ID
         [HttpPost]
-        [Route("GetById")]
+        [Route("getbyid")]
         public IActionResult GetUserDetailsById(Request request)
         {
             if (IsValidId(request.Id))
@@ -72,7 +72,7 @@ namespace BuyBackAPI.Controllers
 
         #region Add / Update / Delete User Details
         [HttpPost]
-        [Route("Manage")]
+        [Route("manage")]
         public IActionResult ManageUser(UserModel request)
         {
             UserModel user = new UserModel();
