@@ -14,9 +14,10 @@ namespace BuyBackAPI.Controllers
         string Message = null;
         int Count = 0;
 
-        [HttpGet]
+        #region Get List of User
+        [HttpPost]
         [Route("List")]
-        public Response GetAllUsers()
+        public IActionResult GetAllUsers()
         {
             var data = DbClientFactory<UserDBClient>.instance.GetAllUsers(GetConnectionString());
 
@@ -32,12 +33,14 @@ namespace BuyBackAPI.Controllers
                 response = BuildResponse(AppConstant.STATUS_FAILED, Count, Message, null, null);
             }
 
-            return response;
+            return Ok(response);
         }
+        #endregion
 
+        #region Get User Details By ID
         [HttpPost]
         [Route("GetById")]
-        public Response GetUserDetailsById(Request request)
+        public IActionResult GetUserDetailsById(Request request)
         {
             if (IsValidId(request.Id))
             {
@@ -63,9 +66,11 @@ namespace BuyBackAPI.Controllers
                 response = BuildResponse(AppConstant.STATUS_FAILED, Count, Message, null, null);
             }
 
-            return response;
+            return Ok(response);
         }
+        #endregion
 
+        #region Add / Update / Delete User Details
         [HttpPost]
         [Route("Manage")]
         public IActionResult ManageUser(UserModel request)
@@ -146,5 +151,6 @@ namespace BuyBackAPI.Controllers
             }
             return Ok(response);
         }
+        #endregion
     }
 }

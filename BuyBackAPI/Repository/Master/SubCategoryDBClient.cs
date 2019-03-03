@@ -8,18 +8,18 @@ namespace BuyBackAPI.Repository.MasterDBClient
 {
     public class SubCategoryDBClient
     {
-        public List<SubCategoryModel> GetAllCategories(string connectionString)
+        public List<SubCategoryModel> GetAllSubCategories(string connectionString)
         {
             return SqlHelper.ExecuteProcedureReturnData<List<SubCategoryModel>>(connectionString, "GetAllSubCategories", x => x.TranslateAsSubCategoriesList());
         }
 
-        public SubCategoryModel GetCategoryById(string connectionString, int id)
+        public SubCategoryModel GetSubCategoryById(string connectionString, int id)
         {
             SqlParameter[] sqlParameters = { new SqlParameter("@Id", id) };
             return SqlHelper.ExecuteProcedureReturnData<SubCategoryModel>(connectionString, "GetSubCategoryById", x => x.TranslateSubCategory(), sqlParameters);
         }
 
-        public string ManageCategory(string connectionString, SubCategoryModel subcategory)
+        public string ManageSubCategory(string connectionString, SubCategoryModel subcategory)
         {
             var outParam = new SqlParameter("@ReturnCode", System.Data.SqlDbType.NVarChar, 20)
             {
