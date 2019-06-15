@@ -15,7 +15,7 @@ namespace BuyBackAPI.Controllers
         int Count = 0;
 
         #region Get List of User
-        [HttpPost]
+        [HttpGet]
         [Route("list")]
         public IActionResult GetAllUsers()
         {
